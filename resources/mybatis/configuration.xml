@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="UserVo" type="com.bit2015.testserver2.vo.UserVo"></typeAlias>
+		<typeAlias alias="GroupVo" type="com.bit2015.testserver2.vo.GroupVo"></typeAlias>
+		<typeAlias alias="TempVo" type="com.bit2015.testserver2.vo.TempVo"></typeAlias>
+		<typeAlias alias="AttendanceVo" type="com.bit2015.testserver2.vo.AttendanceVo"></typeAlias>
+		<typeAlias alias="BoardVo" type="com.bit2015.testserver2.vo.BoardVo"></typeAlias>
+		<typeAlias alias="QnaQVo" type="com.bit2015.testserver2.vo.QnaQVo"></typeAlias>
+		<typeAlias alias="QnaAVo" type="com.bit2015.testserver2.vo.QnaAVo"></typeAlias>
+	</typeAliases>
+
+	<mappers>	
+		<mapper resource="mybatis/mappers/user.xml" />
+		<mapper resource="mybatis/mappers/group.xml" />
+		<mapper resource="mybatis/mappers/board.xml" />
+		<mapper resource="mybatis/mappers/qna.xml" />
+		
+	</mappers>
+</configuration>

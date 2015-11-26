@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+
+
+<mapper namespace="qna">
+	<insert id="createQ" parameterType="QnaQVo">
+		INSERT INTO server_qna_q
+		VALUES (server_qna_q_seq.nextval,
+				#{toGroupNo },
+				#{fromUserNo },
+				#{questionType },
+				#{question },
+				SYSDATE)
+	</insert>
+	<insert id="createAPerson" parameterType="QnaAVo">
+		INSERT INTO server_qna_a
+		VALUES (#{qnaQNo },
+				#{userNo },
+				#{answer })
+	</insert>
+	<select id="getQListByGroupNo" parameterType="long" resultType="hashmap">
+		SELECT a.qna_q_no AS qnaQNo,
+				a.to_group_no AS toGroupNo,
+				a.from_user_no AS fromUserNo,
+				b.user_name AS userName,
+				a.question_type AS questionType,
+				a.question,
+				a.created_date AS createdDate
+		FROM server_qna_q a, server_user b
+		WHERE to_group_no =#{groupNo }
+		  AND a.from_user_no = b.user_no
+	</select>
+	
+	<select id="getAListByUserNo" parameterType="long" resultType="hashmap">
+		SELECT  a.qna_q_no AS qnaQNo,
+				b.FROM_USER_NO AS QUESTIONERNO,
+				e.GROUP_NAME AS groupName,
+				b.QUESTION,
+				c.USER_NAME AS questioner,
+				d.USER_NAME AS answerer,
+				a.user_no	AS answererNo,
+				a.answer
+		 FROM server_qna_a a, server_qna_q b, server_user c, server_user d, server_group e
+		WHERE a.user_no = #{userNo }
+		  AND a.QNA_Q_NO = b.QNA_Q_NO
+		  AND b.FROM_USER_NO = c.USER_NO
+		  AND a.USER_NO = d.USER_NO
+		  AND e.GROUP_NO=b.TO_GROUP_NO
+	</select>
+	
+	<select id="getAListByQNo" parameterType="long" resultType="hashmap">
+		SELECT  a.qna_q_no AS qnaQNo,
+				a.user_no AS userNo,
+				b.USER_NAME AS userName,
+				a.answer
+		FROM server_qna_a a, server_user b
+		WHERE a.qna_q_no = #{qNo } 
+		AND a.USER_NO = b.user_no
+	</select>
+	
+	<select id="getQInfoByQNo" parameterType="long" resultType="hashmap">
+		SELECT qna_q_no AS qnaQNo,
+				to_group_no AS toGroupNo,
+				a.from_user_no AS fromUserNo,
+				b.USER_NAME AS userName,
+				question_type AS questionType,
+				question,
+				created_date AS createdDate
+		FROM server_qna_q a, server_user b
+		WHERE qna_q_no = #{qNo }
+		  AND a.from_user_no = b.USER_NO
+	</select>
+	
+</mapper>
