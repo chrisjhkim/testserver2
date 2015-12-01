@@ -27,10 +27,7 @@ public class QnaQDao {
 	public List<HashMap<String, Object>> getQListByGroupNo(Long groupNo ) {
 		List<HashMap<String, Object>> retList = null;
 		System.out.println("qnaQ Dao : groupNo : "+groupNo);
-		retList = sqlSession.selectList("qna.getQListByGroupNo", groupNo);
-		for( HashMap<String, Object> vo : retList) {
-			System.out.println(vo);
-		}
+		//retList = sqlSession.selectList("qna.getQListByGroupNo", groupNo);
 		System.out.println("DONE!");
 		return retList;
 	}
@@ -39,5 +36,11 @@ public class QnaQDao {
 		Map<String, Object> retMap = null;
 		retMap= sqlSession.selectOne("qna.getQInfoByQNo", qNo);
 		return retMap;
+	}
+	
+	public boolean insertQ(QnaQVo qVo) {
+		boolean retFlag = false;
+		retFlag = (1 == sqlSession.insert("qna.insertQ",qVo) );
+		return retFlag;
 	}
 }

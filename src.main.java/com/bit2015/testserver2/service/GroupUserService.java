@@ -67,4 +67,9 @@ public class GroupUserService {
 		return retList;
 	}
 
+	public List<GroupVo> getGroupListViaUserId ( String userId ) {
+		List<GroupVo> retList = null;
+		retList = groupUserDao.getGroupListViaUserId(userId);
+		return retList;
+	}
 }

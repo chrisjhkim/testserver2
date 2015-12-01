@@ -100,6 +100,11 @@
 							FROM server_group_user 
 							WHERE group_no = #{userNo })
 	</select>
+	<select id="getUserNoViaUserId" parameterType="string" resultType="long">
+		SELECT user_no
+		FROM server_user
+		WHERE user_id = #{userid}
+	</select>
 		<!-- 아직 안씀 
 	<update id="updateUserVoByUserNo" parameterType="hashmap">
 		UPDATE server_user 

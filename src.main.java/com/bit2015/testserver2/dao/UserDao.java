@@ -118,7 +118,11 @@ public class UserDao {
 		return retList;
 	}
 	
-	
+	public Long getUserNoViaUserId ( String userId ) {
+		Long retLong = 0L;
+		retLong = sqlSession.selectOne("user.getUserNoViaUserId", userId);
+		return retLong;
+	}
 	
 	
 }

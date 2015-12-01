@@ -53,6 +53,18 @@
 							  FROM server_group_user
 						     WHERE user_no =#{userNo} ) 
 	</select>
+	
+	<select id="getGroupListViaUserId" parameterType="string" resultType="GroupVo">
+		SELECT group_no AS groupNo,
+			  <!--  group_type AS groupType, -->
+			   group_name AS groupName
+		  FROM server_group
+		 WHERE group_no IN (SELECT group_no 
+							  FROM server_group_user
+						     WHERE user_no =(SELECT user_no 
+										       FROM server_user 
+										      WHERE user_id=#{userId} ) )
+	</select>
 	<select id="getClassNameListByUserNo" parameterType="long" resultType="String">
 		SELECT 
 			   group_name AS groupName

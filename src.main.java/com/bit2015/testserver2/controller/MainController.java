@@ -205,11 +205,8 @@ public class MainController {
 		retList = groupUserService.getUserListOfGroupNo(groupNo);
 		model.addAttribute("userHashMapList", retList);
 		
-		List<HashMap<String, Object>>qList = qnaQService.getQListByGroupNo(groupNo);
-		model.addAttribute("qList", qList);
-		for(HashMap<String,Object> vo : qList ){
-			System.out.println(vo);
-		}
+//		List<HashMap<String, Object>>qList = qnaQService.getQListByGroupNo(groupNo);
+//		model.addAttribute("qList", qList);
 		return "group/groupinfo";
 	}
 	

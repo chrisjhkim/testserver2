@@ -74,4 +74,15 @@
 		  AND a.from_user_no = b.USER_NO
 	</select>
 	
+	<insert id="insertQ" parameterType="QnaQVo">
+		INSERT INTO b_q
+		VALUES (b_q_seq.nextval,
+				#{toWhoNo },
+				#{fromUserNo},
+				#{qMessage },
+				#{createdDate },
+				#{classNo },
+				#{qType },
+				#{qRef } )
+	</insert>
 </mapper>

@@ -1,5 +1,6 @@
 package com.bit2015.testserver2.dao;
 
+import java.security.acl.Group;
 import java.util.HashMap;
 import java.util.List;
 
@@ -54,6 +55,7 @@ public class GroupUserDao {
 	
 	public List<String> getClassNameListByUserNo ( Long userNo ) {
 		List<String> retList = null;
+		
 		retList = sqlSession.selectList("group.getClassNameListByUserNo", userNo);
 		return retList;
 		
@@ -66,6 +68,13 @@ public class GroupUserDao {
 	public List<HashMap<String, Object>> getGroupAndRoleListByUserNo (Long userNo ) {
 		List<HashMap<String, Object>> retList = null;
 		retList = sqlSession.selectList("group.getGroupAndRoleListByUserNo", userNo);
+		return retList;
+	}
+	
+	public List<GroupVo> getGroupListViaUserId ( String userId ) {
+		List<GroupVo> retList = null;
+		System.out.println("ha, userId : "+userId);
+		retList = sqlSession.selectList("group.getGroupListViaUserId",userId);
 		return retList;
 	}
 	

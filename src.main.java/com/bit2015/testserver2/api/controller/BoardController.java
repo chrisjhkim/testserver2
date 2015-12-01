@@ -17,10 +17,10 @@ import com.bit2015.testserver2.vo.BoardVo;
 @Controller("boardAPIController")
 @RequestMapping("/api/board")
 public class BoardController {
-	@Autowired 
-	BoardService boardService;
+	/*@Autowired 
+	BoardService boardService;*/
 	
-	@ResponseBody
+	/*@ResponseBody
 	@RequestMapping("/create-board")
 	public Map<String, Object> createBoard(
 			@RequestParam(value="groupNo", required=true)Long groupNo ,
@@ -30,16 +30,16 @@ public class BoardController {
 		boardVo.setGroupNo(groupNo);
 		boardService.createBoard(boardVo);
 		return retMap;
-	}
+	}*/
 	
-	@ResponseBody
+	/*@ResponseBody
 	@RequestMapping("/get-board-list")
 	public Map<String, Object> getBoardListByGroupNo(
 			@RequestParam(value="groupNo", required=true)Long groupNo ) {
 		Map<String, Object>retMap = new HashMap<String, Object>();
 		List<BoardVo> boardList = boardService.getBoardListByGroupNo(groupNo);
 		return retMap;
-	}
+	}*/
 	
 
 }

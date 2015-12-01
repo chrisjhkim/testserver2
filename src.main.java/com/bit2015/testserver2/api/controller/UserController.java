@@ -55,22 +55,6 @@ public class UserController {
 		retMap.put("result", "success");
 		return retMap;
 	}
-	/*@ResponseBody
-	@RequestMapping(value="/check")
-	public Map<String,Object> check(@RequestParam(value="latitude", required=false)Long latitude,
-									@RequestParam(value="logitude", required=false)Long logitude,
-									@RequestParam(value="lesson", required=false)String lesson){
-		System.out.println("latitude:"+latitude);
-		System.out.println("logitude:"+logitude);
-		System.out.println("수업명"+lesson);
-		
-		HashMap<String, Object>retMap = new HashMap<String, Object>();
-		retMap.put("result", "success");
-		retMap.put("message", "성공 " );
-		
-		return retMap;
-		
-	}*/
 	@ResponseBody
 	@RequestMapping(value="/login")
 	public Map<String, Object> login(
@@ -272,4 +256,6 @@ public class UserController {
 		retMap.put("data", phoneIdList);
 		return retMap;
 	}
+	
+	
 }

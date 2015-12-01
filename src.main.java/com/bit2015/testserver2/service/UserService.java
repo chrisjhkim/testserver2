@@ -102,5 +102,11 @@ public class UserService {
 		return retList;
 	}
 	
+	public Long getUserNoViaUserId ( String userId ) {
+		Long retLong = 0L;
+		retLong = userDao.getUserNoViaUserId(userId);
+		return retLong;
+	}
+	
 	
 }
